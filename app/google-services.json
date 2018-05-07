@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "303158826726",
+    "firebase_url": "https://routesmg-1524443534037.firebaseio.com",
+    "project_id": "routesmg-1524443534037",
+    "storage_bucket": "routesmg-1524443534037.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303158826726:android:66569b8003f6bee2",
+        "android_client_info": {
+          "package_name": "com.l3soft.routesmg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303158826726-kkfh4g4qs6od5t2dahc5umabglmuog7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.l3soft.routesmg",
+            "certificate_hash": "87cedb944791209c26bbc73a95d5e4585913b0be"
+          }
+        },
+        {
+          "client_id": "303158826726-9btj2k1djl3bbl2eukqfh98v74qhrki7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxu38ZoMbAqx2LNW5v54Tpy_Ci2t87D2c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303158826726-9btj2k1djl3bbl2eukqfh98v74qhrki7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

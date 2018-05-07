@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Rutas Managua</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="action_add_favourite">Publicar denuncia</string>
+    <string name="action_play_next">Agregar a mis favoritos</string>
+    <string name="backdrop_title">Rutas de Managua</string>
+    <string name="backdrop_subtitle">recorra la ciudad sin contratiempos</string>
+
+    <!--Strings create by developers-->
+    <!--String for nav header-->
+
+    <string name="nav_header_user">Nombre de usuario</string>
+    <string name="nav_header_email">Correo</string>
+    <string name="nav_header_status">Estado de la conexión</string>
+    <string name="nav_header_content_description">imagen de perfil</string>
+
+    <!--Titles of menu items-->
+    <string name="menu_activity_main_bus">Rutas registradas</string>
+    <string name="menu_activity_main_complaints">Denuncias y comentarios</string>
+    <string name="menu_activity_main_profile">Mi perfil</string>
+    <string name="menu_activity_main_favorite">favoritos</string>
+    <!--Titles of fragments-->
+    <string name="title_for_bus_details_fragment"> Detalles de la ruta</string>
+    <string name="title_for_comment_fragment">Registrar Denuncia</string>
+    <string name="title_for_map_fragment">Registrar Nuevo recorrido</string>
+
+    <!--Titles of status-->
+    <string name="status_conn">Conectado</string>
+    <string name="status_offline">Desconectado</string>
+    <!--Titles of activities-->
+    <string name="title_activity_new_comment">Publicar opinion</string>
+    <string name="title_activity_new_travel">Nuevo recorrido</string>
+    <string name="title_activity_new_bus">Registrar ruta</string>
+
+    <string name="activity_maps_trace_route">Dibujar ruta</string>
+    <string name="activity_maps_clean_map">Terminar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Nueva Ruta</string>
+
+    <string name="filter_travel_for_bus_id">{\"where\":{\"bus_id\":\"%1$d\"}}</string>
+    <string name="filter_route_for_bus_id">{\"where\":{\"travel_id\":\"%1$d\"}}</string>
+</resources>
