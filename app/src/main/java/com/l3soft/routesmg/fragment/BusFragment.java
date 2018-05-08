@@ -63,7 +63,7 @@ public class BusFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
         if(!buses.isEmpty()){
             //load information for local database
-            BusAdapter busAdapter = new BusAdapter(buses);
+            BusAdapter busAdapter = new BusAdapter(buses, getContext());
             recyclerView.setAdapter(busAdapter);
         }
         swipeContainer.setRefreshing(true);

@@ -36,6 +36,9 @@
     <string name="title_activity_new_travel">Nuevo recorrido</string>
     <string name="title_activity_new_bus">Registrar ruta</string>
 
+    <string name="title_activity_new_complaint">Registrar denuncia</string>
+    <string name="title_activity_view_bus">Detalles del bus</string>
+
     <string name="activity_maps_trace_route">Dibujar ruta</string>
     <string name="activity_maps_clean_map">Terminar</string>
 
@@ -45,4 +48,11 @@
 
     <string name="filter_travel_for_bus_id">{\"where\":{\"bus_id\":\"%1$d\"}}</string>
     <string name="filter_route_for_bus_id">{\"where\":{\"travel_id\":\"%1$d\"}}</string>
+
+    <dimen name="activity_new_complaint_padding_content">12dp</dimen>
+    <string name="activity_new_complaint_title">Título</string>
+    <string name="activity_new_complaint_description">Descripción</string>
+    <string name="activity_new_complaint_to_post">Publicar</string>
+
+    <string name="action_add_complaint">Denunciar</string>
 </resources>

@@ -50,7 +50,7 @@ public class BusData {
                         MainActivity.loadStatusConn(null,null,
                                 R.drawable.online,context.getString(R.string.status_conn));
                         //load information from API REST
-                        BusAdapter busAdap = new BusAdapter(response.body());
+                        BusAdapter busAdap = new BusAdapter(response.body(), context);
                         recyclerView.setAdapter(busAdap);
                         //finish refresh
                         swipeContainer.setRefreshing(false);

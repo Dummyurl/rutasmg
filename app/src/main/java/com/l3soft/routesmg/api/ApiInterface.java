@@ -3,6 +3,8 @@ package com.l3soft.routesmg.api;
 import android.arch.persistence.room.Delete;
 
 import com.l3soft.routesmg.entity.Bus;
+import com.l3soft.routesmg.entity.Commentary;
+import com.l3soft.routesmg.entity.CustomCommentary;
 import com.l3soft.routesmg.entity.Place;
 import com.l3soft.routesmg.entity.Route;
 import com.l3soft.routesmg.entity.Travel;
@@ -39,6 +41,14 @@ public interface ApiInterface {
 
     @POST("places")
     Call<Place> postPlace(@Body Place place);
+
+    //Métodos de la entidad commentary
+    @GET("comments")
+    Call<List<CustomCommentary>> getCommentary();
+
+    @POST("comments")
+    Call<Commentary> postCommentary(@Body CustomCommentary customCommentary);
+
 
 
 }
