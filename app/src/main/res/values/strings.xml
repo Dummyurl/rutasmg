@@ -47,7 +47,8 @@
     <string name="title_activity_maps">Nueva Ruta</string>
 
     <string name="filter_travel_for_bus_id">{\"where\":{\"bus_id\":\"%1$d\"}}</string>
-    <string name="filter_route_for_bus_id">{\"where\":{\"travel_id\":\"%1$d\"}}</string>
+    <string name="filter_route_for_travel_id">{\"where\":{\"travel_id\":\"%1$d\"}}</string>
+    <string name="filter_commentary_for_bus_id">{\"where\":{\"bus_id\":\"%1$d\"}}</string>
 
     <dimen name="activity_new_complaint_padding_content">12dp</dimen>
     <string name="activity_new_complaint_title">Título</string>

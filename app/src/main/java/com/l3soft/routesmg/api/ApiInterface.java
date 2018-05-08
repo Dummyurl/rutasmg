@@ -46,9 +46,11 @@ public interface ApiInterface {
     @GET("comments")
     Call<List<CustomCommentary>> getCommentary();
 
+    @GET("comments")
+    Call<Commentary> getCommentaryForID(@Query("filter") String filter);
+
     @POST("comments")
     Call<Commentary> postCommentary(@Body CustomCommentary customCommentary);
-
 
 
 }
