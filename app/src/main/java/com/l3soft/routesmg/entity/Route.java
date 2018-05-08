@@ -3,6 +3,7 @@ package com.l3soft.routesmg.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.Expose;
 
@@ -13,8 +14,8 @@ import com.google.gson.annotations.Expose;
 @Entity
 public class Route {
 
-    @PrimaryKey(autoGenerate = true)
-    @Expose(serialize = false)
+    @PrimaryKey()
+    @NonNull
     private String id;
     @ColumnInfo(name = "travel_id")
     private String travelID;

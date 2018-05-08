@@ -14,17 +14,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.github.clans.fab.FloatingActionButton;
+import com.l3soft.routesmg.activities.ComplaintActivity;
 import com.l3soft.routesmg.activities.MapsActivity;
 import com.l3soft.routesmg.activities.NewCommentActivity;
 import com.l3soft.routesmg.activities.NewTravelActivity;
+import com.l3soft.routesmg.activities.SignInActivity;
+import com.l3soft.routesmg.data.AccessTokenData;
+import com.l3soft.routesmg.entity.AccessToken;
 import com.l3soft.routesmg.fragment.BusFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -37,10 +43,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        isAuthenticated();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         refreshComplains(BusFragment.class);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -54,6 +62,29 @@ public class MainActivity extends AppCompatActivity
 
         initCollapsingToolbar();
         initFabButtons();
+    }
+
+    /**
+     * Initialize SignInActivity and finish the current activity
+     */
+
+    private void backToSignInActivity()
+    {
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    /**
+     * Validate if the access_token is empty and call backToSignInActivity
+     */
+    private void isAuthenticated(){
+        AccessTokenData accessTokenData = new AccessTokenData(this);
+
+        if(accessTokenData.loadDB() == null){
+            backToSignInActivity();
+        }
     }
 
     private void initFabButtons(){
@@ -152,6 +183,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -161,7 +194,15 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            AccessTokenData accessTokenData = new AccessTokenData(this);
+            AccessToken accessToken = accessTokenData.loadDB();
+            if(accessToken != null){
+                accessTokenData.deleteAccessTokenDB(accessToken);
+                backToSignInActivity();
+            }else{
+                Toast.makeText(getApplicationContext(),"Error al cerrar la sesión",Toast.LENGTH_LONG).show();
+                backToSignInActivity();
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -205,6 +246,8 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

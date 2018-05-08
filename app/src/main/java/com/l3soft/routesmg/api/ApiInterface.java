@@ -2,12 +2,14 @@ package com.l3soft.routesmg.api;
 
 import android.arch.persistence.room.Delete;
 
+import com.l3soft.routesmg.entity.AccessToken;
 import com.l3soft.routesmg.entity.Bus;
 import com.l3soft.routesmg.entity.Commentary;
 import com.l3soft.routesmg.entity.CustomCommentary;
 import com.l3soft.routesmg.entity.Place;
 import com.l3soft.routesmg.entity.Route;
 import com.l3soft.routesmg.entity.Travel;
+import com.l3soft.routesmg.entity.User;
 
 import java.util.List;
 
@@ -52,5 +54,9 @@ public interface ApiInterface {
     @POST("comments")
     Call<Commentary> postCommentary(@Body CustomCommentary customCommentary);
 
+    @POST("Users/login")
+    Call<AccessToken> login(@Body User user);
 
+    @POST("Users")
+    Call<User> signUp(@Body User user);
 }

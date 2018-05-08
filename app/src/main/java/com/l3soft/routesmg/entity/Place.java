@@ -3,6 +3,7 @@ package com.l3soft.routesmg.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +14,8 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class Place {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey()
+    @NonNull
     private String id;
 
     @ColumnInfo()

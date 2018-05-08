@@ -23,7 +23,7 @@ public class RouteData {
     }
     public RouteData() {}
     public void getRouteData(int id){
-        String filter = String.format(context.getString(R.string.filter_route_for_bus_id),id);
+        String filter = String.format(context.getString(R.string.filter_route_for_travel_id),id);
         Call<List<Route>> call = Api.instance().getRoutes(filter);
         call.enqueue(new Callback<List<Route>>() {
             @Override

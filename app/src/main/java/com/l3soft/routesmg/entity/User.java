@@ -23,6 +23,10 @@ public class User {
     private String email;
     @ColumnInfo(name = "email_verified")
     private boolean emailVerfied;
+    @ColumnInfo()
+    private String password;
+    @ColumnInfo()
+    private int ttl;
 
     public String getId() {
         return id;
@@ -62,5 +66,21 @@ public class User {
 
     public void setEmailVerfied(boolean emailVerfied) {
         this.emailVerfied = emailVerfied;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getTtl() {
+        return ttl;
+    }
+
+    public void setTtl(int ttl) {
+        this.ttl = ttl;
     }
 }

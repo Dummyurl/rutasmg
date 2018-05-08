@@ -1,13 +1,22 @@
 package com.l3soft.routesmg.entity;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 /**
  * Created by moisolutions on 30/10/17.
  */
-
+@Entity
 public class AccessToken {
-    private String id;
+
+    @PrimaryKey()
+    private @NonNull String id;
+    @ColumnInfo()
     private int ttl;
-    private int userId;
+    @ColumnInfo()
+    private String userId;
 
     public String getId() {
         return id;
@@ -25,11 +34,11 @@ public class AccessToken {
         this.ttl = ttl;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 }

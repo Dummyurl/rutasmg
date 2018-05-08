@@ -9,6 +9,13 @@
     <color name="colorTextButton">#000000</color>
     <color name="colorBackgroundLabel">#FFFFFF</color>
 
+    <!--sing_in-->
+    <color name="activity_sing_in_background_color">#77B3D4</color>
+    <color name="activity_sing_in_color_buttonDark">#2E99E1</color>
+    <color name="activity_sing_in_color_buttonLight">#90CAF9</color>
+    <color name="activity_sing_colorPrimaryDark">#618fa9</color>
+    <color name="colorRegister">#6F96E2</color>
+
     <item name="blue" type="color">#2196f3</item>
     <item name="purple" type="color">#9c27b0</item>
     <item name="green" type="color">#1b5e20</item>
