@@ -39,7 +39,17 @@
     <dimen name="activity_sing_in_width_button">250dp</dimen>
     <dimen name="activity_sing_in_margin_card">35dp</dimen>
     <dimen name="activity_sing_in_corner">10dp</dimen>
-
+    <!--card_view-->
+    <dimen name="card_view_content_space">12dp</dimen>
+    <dimen name="card_view_image_on_card">50dp</dimen>
+    <dimen name="card_view_picture_on_card">280dp</dimen>
+    <dimen name="card_view_content_space_in_card">6dp</dimen>
+    <dimen name="card_view_category_size_on_card">14sp</dimen>
+    <dimen name="card_view_name_size_on_card">15sp</dimen>
+    <dimen name="card_view_content_padding">1dp</dimen>
+    <dimen name="height_more_image_button">30dp</dimen>
+    <dimen name="card_view_padding_left_more_image_button">8dp</dimen>
+    <dimen name="card_view_padding_right_more_image_button">8dp</dimen>
 
     <dimen name="padding_layout">12dp</dimen>
 </resources>

@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.l3soft.routesmg.MainActivity;
@@ -67,6 +68,30 @@ public class BusData {
             public void onFailure(Call<List<Bus>> call, Throwable t) {
                 //message on view when fail
                 swipeContainer.setRefreshing(false);
+                Toast.makeText(context,"",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getBus(String busID, final TextView busNumber){
+
+        Call<Bus> bus = Api.instance().getBuse(busID);
+        bus.enqueue(new Callback<Bus>() {
+            @Override
+            public void onResponse(Call<Bus> call, Response<Bus> response) {
+                if (response.body() != null) {
+                    String numero = "";
+                    try{
+                        numero = String.valueOf(response.body().getNumber());
+                        busNumber.setText("Número de la ruta: "+numero);
+                    }catch (Exception e){
+                        Log.e("ERROR BUS",e.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Bus> call, Throwable t) {
                 Toast.makeText(context,"",Toast.LENGTH_SHORT).show();
             }
         });

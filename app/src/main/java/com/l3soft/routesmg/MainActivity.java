@@ -32,6 +32,7 @@ import com.l3soft.routesmg.activities.SignInActivity;
 import com.l3soft.routesmg.data.AccessTokenData;
 import com.l3soft.routesmg.entity.AccessToken;
 import com.l3soft.routesmg.fragment.BusFragment;
+import com.l3soft.routesmg.fragment.TravelFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -223,7 +224,7 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.nav_comment){
 
         }else if(id == R.id.nav_favorite){
-
+            fragmentClass = TravelFragment.class;
         }
 
         refreshComplains(fragmentClass);

@@ -1,9 +1,12 @@
 package com.l3soft.routesmg.data;
 
 
+import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.l3soft.routesmg.adapter.TravelAdapter;
 import com.l3soft.routesmg.api.Api;
 import com.l3soft.routesmg.entity.Place;
 
@@ -19,9 +22,15 @@ public class PlaceData {
     private int size;
     private AlertDialog process;
     private List<Place> places;
+    private Context context;
+
     public PlaceData() {
         places = new ArrayList<>();
         position = 1;
+    }
+
+    public PlaceData(Context context) {
+        this.context = context;
     }
 
     public void createPlace(Place place){
@@ -60,5 +69,31 @@ public class PlaceData {
             places.get(i).setPosition(i);
             createPlace(places.get(i));
         }
+    }
+
+    public void getPlacesForID(String routeID, final TravelAdapter.MyViewHolder holder){
+        String filter = routeID;
+        Call<List<Place>> call = Api.instance().getPlace(filter);
+        call.enqueue(new Callback<List<Place>>() {
+            @Override
+            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
+                if(response.body() != null){
+                    for(Place place : response.body()){
+                        LatLng latLng = new LatLng(place.getCoordx(), place.getCoordy());
+                        holder.latLngs.add(latLng);
+                        holder.mapView.onCreate(null);
+                        holder.mapView.getMapAsync(holder);
+                    }
+                }else{
+                    Log.e("PLACE DATA GET ERROR",response.message()+" "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Place>> call, Throwable t) {
+                Log.e("PLACE DATA GET ERROR",t.getMessage());
+            }
+        });
+
     }
 }

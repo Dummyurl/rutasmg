@@ -2,11 +2,9 @@ package com.l3soft.routesmg.data;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.l3soft.routesmg.R;
 import com.l3soft.routesmg.api.Api;
@@ -51,6 +49,27 @@ public class TravelData {
             @Override
             public void onFailure(Call<List<Travel>> call, Throwable t) {
                 Log.e("ERROR","SAD "+t.getMessage());
+            }
+        });
+    }
+
+    public void getTravel(final TextView number,String travelID){
+
+        Call<Travel> call =  Api.instance().getTravel(travelID);
+        call.enqueue(new Callback<Travel>() {
+            @Override
+            public void onResponse(Call<Travel> call, Response<Travel> response) {
+                if(response.body() != null){
+                    if(response.body().getBusId() != null){
+                        BusData busData = new BusData(number.getContext());
+                        busData.getBus(response.body().getBusId(),number);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Travel> call, Throwable t) {
+
             }
         });
     }

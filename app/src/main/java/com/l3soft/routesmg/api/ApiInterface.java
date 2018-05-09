@@ -22,13 +22,14 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
- * Created by ElOskar101 on 11/04/2018.
+ * Created by Mario Arce on 7/05/2018.
  */
 public interface ApiInterface {
     //Metodos de la entidad buses
     @GET("buses?filter[order]=create_at%20DESC")
     Call<List<Bus>> getBuses();
-
+    @GET("buses/{id}")
+    Call<Bus> getBuse(@Path("id") String busID);
     @POST("buses")
     Call<Bus> postBus(@Body Bus bus);
 
@@ -42,8 +43,17 @@ public interface ApiInterface {
     @POST("routes")
     Call<Route> postRoutes(@Body Route route);
 
+    @GET("places")
+    Call<List<Place>> getPlace(@Query("filter[where][route_id]") String filter);
+
     @POST("places")
     Call<Place> postPlace(@Body Place place);
+
+    @GET("routes")
+    Call<List<Route>> getRoutes();
+
+    @GET("travels/{id}")
+    Call<Travel> getTravel(@Path("id") String id);
 
     //Métodos de la entidad commentary
     @GET("comments")

@@ -8,7 +8,7 @@
     <color name="album_title">#4c4c4c</color>
     <color name="colorTextButton">#000000</color>
     <color name="colorBackgroundLabel">#FFFFFF</color>
-
+    <color name="placeHolderImage">#F5F5F5</color>
     <!--sing_in-->
     <color name="activity_sing_in_background_color">#77B3D4</color>
     <color name="activity_sing_in_color_buttonDark">#2E99E1</color>

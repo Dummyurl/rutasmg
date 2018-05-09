@@ -25,7 +25,7 @@
     <string name="menu_activity_main_bus">Rutas registradas</string>
     <string name="menu_activity_main_complaints">Denuncias y comentarios</string>
     <string name="menu_activity_main_profile">Mi perfil</string>
-    <string name="menu_activity_main_favorite">favoritos</string>
+    <string name="menu_activity_main_favorite">Recorridos</string>
     <!--Titles of fragments-->
     <string name="title_for_bus_details_fragment"> Detalles de la ruta</string>
     <string name="title_for_comment_fragment">Registrar Denuncia</string>

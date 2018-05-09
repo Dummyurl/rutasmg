@@ -2,9 +2,10 @@ package com.l3soft.routesmg.data;
 
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.l3soft.routesmg.R;
+import com.l3soft.routesmg.adapter.TravelAdapter;
 import com.l3soft.routesmg.api.Api;
 import com.l3soft.routesmg.entity.Place;
 import com.l3soft.routesmg.entity.Route;
@@ -21,24 +22,30 @@ public class RouteData {
     public RouteData(Context context) {
         this.context = context;
     }
+
     public RouteData() {}
-    public void getRouteData(int id){
-        String filter = String.format(context.getString(R.string.filter_route_for_travel_id),id);
-        Call<List<Route>> call = Api.instance().getRoutes(filter);
+
+    public void getRoutes(final RecyclerView recyclerView) {
+
+        Call<List<Route>> call = Api.instance().getRoutes();
         call.enqueue(new Callback<List<Route>>() {
             @Override
             public void onResponse(Call<List<Route>> call, Response<List<Route>> response) {
-
+                if(response.body() != null){
+                    Log.i("ROUTES GET ÉXITO",response.body().size()+"");
+                    TravelAdapter travelAdapter = new TravelAdapter(response.body());
+                    recyclerView.setAdapter(travelAdapter);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Route>> call, Throwable t) {
-
+                Log.e("ROUTES GET ERROR",t.getMessage());
             }
         });
     }
 
-    public  void createRoute(String travelID, final List<Place> places, final AlertDialog process){
+    public  void createRoute (String travelID, final List<Place> places, final AlertDialog process){
         Route route = new Route();
         route.setTravelID(travelID);
         Call<Route> call = Api.instance().postRoutes(route);
