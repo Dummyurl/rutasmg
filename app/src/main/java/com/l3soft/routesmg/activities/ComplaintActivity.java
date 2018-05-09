@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -49,9 +51,7 @@ public class ComplaintActivity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadImage();
-
-            }
+                loadImage();            }
         });
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +85,11 @@ public class ComplaintActivity extends AppCompatActivity {
 
         if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
             uri = data.getData();
-            imageButton.setImageURI(uri);
-
+            Glide.with(this.getApplicationContext()).load(uri.toString())
+                    .apply(new RequestOptions()
+                            .centerCrop()
+                            .placeholder(R.drawable.ic_default_image_complaint))
+                    .into(imageButton);
 
             StorageReference filePath = mStorage.child("images").child(uri.getLastPathSegment());
 
@@ -94,7 +97,7 @@ public class ComplaintActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     uri = taskSnapshot.getDownloadUrl();
-                    //Toast.makeText(getApplicationContext(), "Subida a firebase", Toast.LENGTH_LONG).show();
+
 
                 }
             });
@@ -112,6 +115,7 @@ public class ComplaintActivity extends AppCompatActivity {
         Bundle parameter = this.getIntent().getExtras();
         if(parameter != null) {
             busID = getIntent().getExtras().getString("busID");
+            System.out.println("busID: "+busID);
         }
     }
 

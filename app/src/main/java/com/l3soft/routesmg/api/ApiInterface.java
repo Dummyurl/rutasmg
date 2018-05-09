@@ -15,6 +15,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -48,9 +49,6 @@ public interface ApiInterface {
     @GET("comments")
     Call<List<CustomCommentary>> getCommentary();
 
-    @GET("comments")
-    Call<Commentary> getCommentaryForID(@Query("filter") String filter);
-
     @POST("comments")
     Call<Commentary> postCommentary(@Body CustomCommentary customCommentary);
 
@@ -59,4 +57,12 @@ public interface ApiInterface {
 
     @POST("Users")
     Call<User> signUp(@Body User user);
+
+    // Borrar un comentario
+    @DELETE("comments/{id}")
+    Call<List<CustomCommentary>> deleteCommentary(@Path("id") String comentaryID);
+
+    //Métodos de la entidad commentary
+    @GET("comments")
+    Call<List<CustomCommentary>> getCommentaryForID(@Query("filter") String filter);
 }

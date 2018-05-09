@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.l3soft.routesmg.R;
 import com.l3soft.routesmg.activities.ComplaintActivity;
 import com.l3soft.routesmg.activities.DetailsComplaint;
@@ -25,7 +25,6 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
 
     private List<Bus> busList;
     private Context bContext ;
-    int index = 0;
 
     private int[] colors;
 
@@ -61,18 +60,19 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+
         Bus bus = busList.get(position);
         int number = (int) (Math.random() * 9);
         String description = bus.getDescription();
 
         if (description.length() > 57) {
 
+
             String descrip = description.substring(0, 54);
             descrip += "...";
             description = descrip;
 
-            Log.i("Descripción 2", description.length() + "");
         }
         holder.number.setBackgroundColor(colors[number]);
         holder.number.setText(String.valueOf(bus.getNumber()));
@@ -84,7 +84,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(bContext, DetailsComplaint.class);
-                intent.putExtra("busID", busList.get(index).getId());
+                intent.putExtra("busID", busList.get(position).getId());
                 bContext.startActivity(intent);
             }
         });
@@ -93,7 +93,8 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 try {
-                    showPopupMenu(holder.overflow);
+
+                    showPopupMenu(holder.overflow, position);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -105,12 +106,12 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
     /**
      * Mostrando el pup-up cuando presiona los tres puntos
      */
-    private void showPopupMenu(View view) {
+    private void showPopupMenu(View view, int position) {
         // inflate menu
         PopupMenu popup = new PopupMenu(bContext, view);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.bus_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+        popup.setOnMenuItemClickListener(new MyMenuItemClickListener(position));
         popup.show();
     }
 
@@ -119,7 +120,9 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
      */
     class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
-        public MyMenuItemClickListener() {
+        int position;
+        public MyMenuItemClickListener(int position) {
+            this.position = position;
         }
 
         @Override
@@ -129,7 +132,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.MyViewHolder> {
                     try {
                         Intent intent = new Intent(bContext, ComplaintActivity.class);
 
-                        intent.putExtra("busID", busList.get(index).getId());
+                        intent.putExtra("busID", busList.get(position).getId());
                         bContext.startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();

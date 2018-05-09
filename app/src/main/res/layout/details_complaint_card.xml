@@ -32,16 +32,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/count_details_complaint"
-                    android:layout_width="@dimen/ic_album_overflow_width"
-                    android:layout_height="@dimen/ic_album_overflow_height"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
-                    android:scaleType="centerCrop"
-                    />
-
-
-                <TextView
                     android:id="@+id/title_details_complaint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,13 +43,21 @@
                 <TextView
                     android:id="@+id/description_details_complaint"
                     android:layout_width="match_parent"
-                    android:layout_below="@+id/title_details_complaint"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/title_details_complaint"
                     android:layout_marginBottom="6px"
                     android:layout_marginLeft="6px"
                     android:layout_marginTop="12px"
                     android:text="" />
 
+                <ImageView
+                    android:id="@+id/overflow_details_complaint"
+                    android:layout_width="@dimen/ic_album_overflow_width"
+                    android:layout_height="@dimen/ic_album_overflow_height"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_dots" />
             </RelativeLayout>
 
 

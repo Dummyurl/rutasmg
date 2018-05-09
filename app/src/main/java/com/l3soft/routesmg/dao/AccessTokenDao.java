@@ -21,4 +21,6 @@ public interface AccessTokenDao {
 
     @Delete
     void deleteAccessToken(AccessToken accessToken);
+
+
 }
